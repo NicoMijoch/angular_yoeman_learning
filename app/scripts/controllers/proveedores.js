@@ -8,7 +8,7 @@
  * Controller of the angularYoemanLearningApp
  */
 angular.module('angularYoemanLearningApp')
-  .controller('ProveedoresCtrl', function ($scope, provServ) {
+  .controller('ProveedoresCtrl', function ($scope, provServ, toastr) {
     $scope.proveedores = [];
 	$scope.prov ={};
 	
@@ -18,7 +18,7 @@ angular.module('angularYoemanLearningApp')
 
 	$scope.altaProv = function(ata) { 
 	provServ.create($scope.prov).then(function(res){
-		alert("Guardado Exitosamente!");
+		toastr.success("Guardado Exitosamente!","Alta");
 		$scope.prov.nombre = '';
 	})
 	};
