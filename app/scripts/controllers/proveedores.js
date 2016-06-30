@@ -16,8 +16,15 @@ angular.module('angularYoemanLearningApp')
 		$scope.proveedores = res;
 	});
 
-	$scope.altaProv = function(ata) { 
+	$scope.altaProv = function(data) { 
 	provServ.create($scope.prov).then(function(res){
+		toastr.success("Guardado Exitosamente!","Alta");
+		$scope.prov.nombre = '';
+	})
+	};
+	//TERMINAR
+	$scope.delProv = function(data) { 
+	provServ.delete($scope.prov.id).then(function(res){
 		toastr.success("Guardado Exitosamente!","Alta");
 		$scope.prov.nombre = '';
 	})
