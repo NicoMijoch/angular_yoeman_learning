@@ -8,8 +8,22 @@
  * Controller of the angularYoemanLearningApp
  */
 angular.module('angularYoemanLearningApp')
-  .controller('ProveedoresCtrl', function () {
-    this.awesomeThings = [
+  .controller('ProveedoresCtrl', function ($scope, provServ) {
+    $scope.proveedores = [];
+	$scope.prov ={};
+	
+	provServ.all().then(function(res){
+		$scope.proveedores = res;
+	});
+
+	$scope.altaProv = function(ata) { 
+	provServ.create($scope.prov).then(function(res){
+		alert("Guardado Exitosamente!");
+		$scope.prov.nombre = '';
+	})
+	};
+	
+	this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
